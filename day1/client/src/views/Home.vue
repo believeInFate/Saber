@@ -1,12 +1,22 @@
 <template>
     <div class="home">
-        home
+        <div v-for="(item, index) in list" :key="index">
+            {{ item }}
+        </div>
     </div>
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex';
 export default {
-    name: 'home',
-    components: {},
+    computed: {
+        ...mapState(['list']),
+    },
+    methods: {
+        ...mapActions(['getList']),
+    },
+    mounted() {
+        this.getList();
+    },
 };
 </script>

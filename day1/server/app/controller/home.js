@@ -21,7 +21,8 @@ class HomeController extends Controller {
             };
             return;
         }
-        let token = jwt.sign(user, app.config.keys);
+        let token = jwt.sign(user, 'aaa');
+        ctx.session.usertoken = token;
         ctx.body = {
             code: 0,
             message: '登录成功',
