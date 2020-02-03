@@ -2,8 +2,6 @@ const white = ['/login', 'registry'];
 const jwt = require('jsonwebtoken');
 module.exports = () => {
     return async function(ctx, next) {
-        console.log(ctx.request.header.authortoken, ctx.session.usertoken);
-
         if (white.includes(ctx.url)) {
             await next();
         } else {
@@ -22,8 +20,6 @@ module.exports = () => {
             } else {
                 let clientToken = ctx.request.header.authortoken;
                 let serverToken = ctx.session.usertoken;
-                console.log(clientToken === serverToken);
-
                 if (clientToken === serverToken) {
                     await next();
                 } else {

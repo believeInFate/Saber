@@ -16,6 +16,16 @@ const routes = [
         component: () => import('../views/Login.vue'),
     },
     {
+        path: '/list',
+        name: 'list',
+        component: () => import('../views/List.vue'),
+    },
+    {
+        path: '/detail',
+        name: 'detail',
+        component: () => import('../views/Detail.vue'),
+    },
+    {
         path: '*',
         redirect: '/login',
     },

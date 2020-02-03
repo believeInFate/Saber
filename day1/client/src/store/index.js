@@ -13,14 +13,13 @@ export default new Vuex.Store({
         },
     },
     actions: {
-        async getList(store) {
+        async getList(store, options) {
             const { $request } = Vue.prototype;
-            let res = await $request('get', '/list');
+            let res = await $request(options.method, options.url, options.data);
             const { code, result } = res.data;
-            console.log(result);
-
             if (code === 0) {
                 store.commit('setList', result);
+                return;
             }
         },
     },
