@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Button } from 'antd';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import userlist from './home/userlist';
 import useradd from './home/useradd';
@@ -101,6 +101,15 @@ class home extends Component {
                             >
                                 注销
                             </span>
+                            <Button
+                                type="danger"
+                                style={{ position: 'absolute', top: '15px', right: '10px' }}
+                                onClick={() => {
+                                    _this.props.history.push('/home/useradd');
+                                }}
+                            >
+                                增加用户
+                            </Button>
                         </Header>
                         <Content
                             style={{
