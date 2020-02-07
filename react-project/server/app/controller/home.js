@@ -15,7 +15,11 @@ class HomeController extends Controller {
             ctx.body = app.sendMes(1, '密码不对');
             return;
         }
-        const token = jwt.sign({ ...result[0] }, app.config.keys);
+        let signData = {
+            ...result[0],
+            signTime: new Date().getTime(),
+        };
+        const token = jwt.sign(signData, app.config.keys);
         ctx.body = app.sendMes(0, '登陆成功', { token, user });
     }
 }
